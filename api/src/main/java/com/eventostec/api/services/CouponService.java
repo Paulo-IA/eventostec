@@ -24,13 +24,10 @@ public class CouponService {
         newCoupon.setDiscount(data.discount());
         newCoupon.setValid(new Date(data.valid()));
         // Get event on DB
-        Event event = this.getEventById(data.event_id());
+
+        Event event = eventRepository.getReferenceById(data.event_id());
         newCoupon.setEvent(event);
 
         return newCoupon;
-    }
-
-    private Event getEventById(UUID eventId) {
-        return eventRepository.getReferenceById(eventId);
     }
 }
